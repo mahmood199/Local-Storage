@@ -2,14 +2,13 @@ package com.example.localstorage
 
 import android.app.Application
 import android.content.Context
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.localstorage.data.DBAccessPoint
 import com.example.localstorage.data.Employee
-import com.example.localstorage.data.FailureStatus
-import com.example.localstorage.data.Resource
+import com.example.localstorage.util.FailureStatus
+import com.example.localstorage.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

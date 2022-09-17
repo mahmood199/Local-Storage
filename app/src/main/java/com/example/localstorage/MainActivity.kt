@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.localstorage.data.Employee
-import com.example.localstorage.data.Resource
+import com.example.localstorage.util.Resource
 import com.example.localstorage.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

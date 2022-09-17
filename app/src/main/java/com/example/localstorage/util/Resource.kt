@@ -1,4 +1,4 @@
-package com.example.localstorage.data
+package com.example.localstorage.util
 
 sealed class Resource<out T> {
 
