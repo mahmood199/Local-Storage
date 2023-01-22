@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TodoViewModel(
-    application: Application
+    application: Application,
 ) : AndroidViewModel(application) {
 
     fun getAllTodos() = liveData(Dispatchers.IO) {
@@ -33,6 +33,13 @@ class TodoViewModel(
                         description = todoDescription
                     )
                 )
+        }
+    }
+
+    fun deleteAllTodos() {
+        viewModelScope.launch {
+            DBAccessPoint.getDB(getApplication()).todoDao()
+                .deleteAllTodos()
         }
     }
 
