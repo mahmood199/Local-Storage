@@ -3,4 +3,5 @@
     <string name="add_employee">add employee</string>
     <string name="add_todo">Add Todo</string>
     <string name="show_todo">Show Todo</string>
+    <string name="delete_all_todo">Delete All Todo</string>
 </resources>

@@ -7,6 +7,15 @@
     tools:context=".feat.todo.TodoActivity">
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_delete_all_todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_all_todo"
+        app:layout_constraintBottom_toTopOf="@+id/btn_show_all_todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add_todo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nsv_employee"
+        android:id="@+id/nsv_todo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="0dp"
@@ -35,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_add_todo">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_employees"
+            android:id="@+id/tv_todo"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -45,7 +54,7 @@
         android:id="@+id/cpi_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/nsv_employee"
+        app:layout_constraintBottom_toBottomOf="@+id/nsv_todo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
