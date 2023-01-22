@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">LocalStorage</string>
     <string name="add_employee">add employee</string>
+    <string name="add_todo">Add Todo</string>
+    <string name="show_todo">Show Todo</string>
+    <string name="delete_all_todo">Delete All Todo</string>
+    <string name="choose_an_action">Choose an action on todo</string>
+    <string name="edit_todo">Edit this todo</string>
+    <string name="delete_todo">Delete this todo</string>
 </resources>
