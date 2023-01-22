@@ -1,4 +1,4 @@
-package com.example.localstorage.features.todo
+package com.example.localstorage.features.todo.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.localstorage.R
 import com.example.localstorage.data.model.Todo
 import com.example.localstorage.databinding.ActivityTodoBinding
+import com.example.localstorage.features.todo.TodoClickListenerAction
+import com.example.localstorage.features.todo.viewmodel.TodoViewModel
 import com.example.localstorage.features.todo.adapter.TodoAdapter
 import com.example.localstorage.util.BundleDataIdentifier
 import com.example.localstorage.util.Resource

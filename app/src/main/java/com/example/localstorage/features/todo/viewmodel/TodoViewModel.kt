@@ -1,4 +1,4 @@
-package com.example.localstorage.features.todo
+package com.example.localstorage.features.todo.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
