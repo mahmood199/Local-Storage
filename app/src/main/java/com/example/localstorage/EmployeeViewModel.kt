@@ -1,23 +1,22 @@
 package com.example.localstorage
 
 import android.app.Application
-import android.content.Context
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.example.localstorage.data.DBAccessPoint
-import com.example.localstorage.data.Employee
+import com.example.localstorage.data.db.DBAccessPoint
+import com.example.localstorage.data.model.Employee
 import com.example.localstorage.util.FailureStatus
 import com.example.localstorage.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EmployeeViewModel() : ViewModel() {
+class EmployeeViewModel(application: Application) : AndroidViewModel(application) {
 
 
-    fun addEmployee(context: Context,employeeName: String, employeeNumber: String) {
+    fun addEmployee(employeeName: String, employeeNumber: String) {
         viewModelScope.launch {
-            DBAccessPoint.getDB(context.applicationContext).employeeDao()
+            DBAccessPoint.getDB(getApplication()).employeeDao()
                 .addEmployee(
                     Employee(
                         employeeName = employeeName,
@@ -28,10 +27,10 @@ class EmployeeViewModel() : ViewModel() {
         }
     }
 
-    fun getALLEmployees(application: Application) = liveData(Dispatchers.IO) {
+    fun getAllEmployees() = liveData(Dispatchers.IO) {
         emit(Resource.Loading)
         try {
-            emit(Resource.Success(DBAccessPoint.getDB(application).employeeDao().getAllEmployees()))
+            emit(Resource.Success(DBAccessPoint.getDB(getApplication()).employeeDao().getAllEmployees()))
         } catch (exception: Exception) {
             emit(Resource.Failure(FailureStatus.API_FAIL, message = exception.message ?: "Error!"))
         }

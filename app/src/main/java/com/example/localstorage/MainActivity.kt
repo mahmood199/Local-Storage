@@ -5,7 +5,7 @@ import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.localstorage.data.Employee
+import com.example.localstorage.data.model.Employee
 import com.example.localstorage.util.Resource
 import com.example.localstorage.databinding.ActivityMainBinding
 
@@ -18,12 +18,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this)[EmployeeViewModel::class.java]
+        getAllEmployeesAndShow()
 
         binding.btnAddEmployee.setOnClickListener {
             if (TextUtils.isEmpty(binding.tvName.text).not() &&
                 TextUtils.isEmpty(binding.tvNumber.text).not()
             ) {
-                viewModel.addEmployee(this.applicationContext,
+                viewModel.addEmployee(
                     binding.tvName.text.toString(),
                     binding.tvNumber.text.toString())
                 getAllEmployeesAndShow()
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getAllEmployeesAndShow() {
-        viewModel.getALLEmployees(this.application).observe(this) {
+        viewModel.getAllEmployees().observe(this) {
             when (it) {
                 is Resource.Default -> {
                     binding.cpiLoading.visibility = View.GONE
