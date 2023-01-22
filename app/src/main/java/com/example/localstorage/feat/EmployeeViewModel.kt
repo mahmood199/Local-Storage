@@ -1,4 +1,4 @@
-package com.example.localstorage.ui
+package com.example.localstorage.feat
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
