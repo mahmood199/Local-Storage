@@ -1,21 +1,32 @@
 package com.example.localstorage.features.todo
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.localstorage.R
 import com.example.localstorage.data.model.Todo
 import com.example.localstorage.databinding.ActivityTodoBinding
 import com.example.localstorage.features.todo.adapter.TodoAdapter
 import com.example.localstorage.util.Resource
 
+
 class TodoActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityTodoBinding
     private val viewModel by viewModels<TodoViewModel>()
+    val someActivityResultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            getAllTodos()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,12 +114,14 @@ class TodoActivity : AppCompatActivity() {
                 }
             }
         }
-        pictureDialog.setCancelable(false)
+        pictureDialog.setCancelable(true)
         pictureDialog.show()
     }
 
     private fun redirectToNewActivityToEditThisTodoAndReturnResult(todo: Todo) {
-
+        val intent = Intent(this, EditTodoActivity::class.java)
+        intent.putExtra(BundleDataIdentifier.TODO, todo)
+        someActivityResultLauncher.launch(intent)
     }
 
     private fun deleteThisTodo(todo: Todo) {
