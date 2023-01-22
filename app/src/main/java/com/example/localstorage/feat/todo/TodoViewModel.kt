@@ -43,5 +43,12 @@ class TodoViewModel(
         }
     }
 
+    fun deleteTodo(todo: Todo) {
+        viewModelScope.launch {
+            DBAccessPoint.getDB(getApplication()).todoDao()
+                .deleteTodo(todo)
+        }
+    }
+
 
 }

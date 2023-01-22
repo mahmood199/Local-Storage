@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.localstorage.data.model.Todo
 import com.example.localstorage.databinding.ItemTodoBinding
+import com.example.localstorage.feat.todo.TodoClickListenerAction
 
 class TodoAdapter(
-    private val todoList : MutableList<Todo>
+    private val todoList: MutableList<Todo>,
+    private val action: (TodoClickListenerAction) -> Unit,
 ) : RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
 
 
@@ -23,21 +25,27 @@ class TodoAdapter(
         holder.binding.apply {
             tvTodoTitle.text = todoList[position].title
             tvTodoDescription.text = todoList[position].description
+
+            root.setOnClickListener {
+                action.invoke(TodoClickListenerAction.onClick(todoList[position], position))
+            }
+
+            root.setOnLongClickListener {
+                action.invoke(TodoClickListenerAction.onLongPress(todoList[position], position))
+                true
+            }
         }
     }
 
     override fun getItemCount() = todoList.size
 
     fun deleteTodo(todo: Todo) {
-        if(todoList.contains(todo)) {
+        if (todoList.contains(todo)) {
             todoList.remove(todo)
             notifyDataSetChanged()
         }
     }
 
-
-    inner class ViewHolder(val binding: ItemTodoBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    }
+    inner class ViewHolder(val binding: ItemTodoBinding) : RecyclerView.ViewHolder(binding.root)
 
 }

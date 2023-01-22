@@ -63,8 +63,21 @@ class TodoActivity : AppCompatActivity() {
 
     private fun setTodoList(value: List<Todo>) {
         binding.apply {
-            rvTodo.adapter = TodoAdapter(value.toMutableList())
+            rvTodo.adapter = TodoAdapter(value.toMutableList()) {
+                handleTouchListener(it)
+            }
             rvTodo.adapter?.itemCount?.let { rvTodo.scrollToPosition(it - 1) }
+        }
+    }
+
+    private fun handleTouchListener(it: TodoClickListenerAction) {
+        when(it) {
+            is TodoClickListenerAction.onClick -> {
+                Toast.makeText(this, "Just Click @ ${it.position}", Toast.LENGTH_SHORT).show()
+            }
+            is TodoClickListenerAction.onLongPress -> {
+                Toast.makeText(this, "Long Press @ ${it.position}", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
