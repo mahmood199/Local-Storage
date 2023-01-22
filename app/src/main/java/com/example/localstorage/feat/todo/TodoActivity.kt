@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.example.localstorage.R
-import com.example.localstorage.data.model.Employee
 import com.example.localstorage.data.model.Todo
-import com.example.localstorage.databinding.ActivityMainBinding
 import com.example.localstorage.databinding.ActivityTodoBinding
+import com.example.localstorage.feat.todo.adapter.TodoAdapter
 import com.example.localstorage.util.Resource
 
 class TodoActivity : AppCompatActivity() {
@@ -57,18 +55,16 @@ class TodoActivity : AppCompatActivity() {
                     binding.cpiLoading.visibility = View.VISIBLE
                 }
                 is Resource.Success -> {
-                    setText(it.value)
+                    setTodoList(it.value)
                 }
             }
         }
     }
 
-    private fun setText(value: List<Todo>) {
-        var data = ""
-        value.forEach {
-            data += "${it.id}\n" + it.title + "\n" + it.description + "\n\n\n"
+    private fun setTodoList(value: List<Todo>) {
+        binding.apply {
+            rvTodo.adapter = TodoAdapter(value.toMutableList())
+            rvTodo.adapter?.itemCount?.let { rvTodo.scrollToPosition(it - 1) }
         }
-        binding.tvTodo.text = data
-        binding.nsvTodo.fullScroll(View.FOCUS_DOWN)
     }
 }
