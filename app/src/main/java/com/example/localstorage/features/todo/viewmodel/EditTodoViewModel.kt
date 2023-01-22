@@ -7,7 +7,9 @@ import com.example.localstorage.data.db.DBAccessPoint
 import com.example.localstorage.data.model.Todo
 import kotlinx.coroutines.launch
 
-class EditTodoViewModel(application: Application) : AndroidViewModel(application) {
+class EditTodoViewModel(
+    application: Application,
+) : AndroidViewModel(application) {
 
     fun updateTodo(todo: Todo) {
         viewModelScope.launch {
