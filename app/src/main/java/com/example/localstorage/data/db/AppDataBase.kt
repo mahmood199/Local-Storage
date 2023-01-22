@@ -7,7 +7,7 @@ import com.example.localstorage.data.dao.TodoDao
 import com.example.localstorage.data.model.Employee
 import com.example.localstorage.data.model.Todo
 
-@Database(entities = [Employee::class, Todo::class], version = 1)
+@Database(entities = [Employee::class, Todo::class], version = 2)
 abstract class AppDataBase : RoomDatabase() {
 
     abstract fun employeeDao(): EmployeeDao
