@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import com.example.localstorage.R
 import com.example.localstorage.data.model.Todo
 import com.example.localstorage.databinding.ActivityTodoBinding
 import com.example.localstorage.feat.todo.adapter.TodoAdapter
@@ -76,8 +78,42 @@ class TodoActivity : AppCompatActivity() {
                 Toast.makeText(this, "Just Click @ ${it.position}", Toast.LENGTH_SHORT).show()
             }
             is TodoClickListenerAction.onLongPress -> {
-                Toast.makeText(this, "Long Press @ ${it.position}", Toast.LENGTH_SHORT).show()
+                showTodoActionables(it.todo)
             }
         }
     }
+
+    private fun showTodoActionables(todo: Todo) {
+        val pictureDialog = AlertDialog.Builder(this)
+        pictureDialog.setTitle(getString(R.string.choose_an_action))
+        val pictureDialogItems =
+            arrayOf(
+                getString(R.string.edit_todo),
+                getString(R.string.delete_todo)
+            )
+        pictureDialog.setItems(
+            pictureDialogItems
+        ) { _, which ->
+            when (which) {
+                0 -> {
+                    redirectToNewActivityToEditThisTodoAndReturnResult(todo)
+                }
+                1 -> {
+                    deleteThisTodo(todo)
+                }
+            }
+        }
+        pictureDialog.setCancelable(false)
+        pictureDialog.show()
+    }
+
+    private fun redirectToNewActivityToEditThisTodoAndReturnResult(todo: Todo) {
+
+    }
+
+    private fun deleteThisTodo(todo: Todo) {
+        viewModel.deleteTodo(todo)
+        (binding.rvTodo.adapter as TodoAdapter).deleteTodo(todo)
+    }
+
 }
