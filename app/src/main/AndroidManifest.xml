@@ -14,14 +14,14 @@
         android:theme="@style/Theme.LocalStorage"
         tools:targetApi="31">
         <activity
-            android:name=".features.todo.EditTodoActivity"
+            android:name=".features.todo.activities.EditTodoActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".features.todo.TodoActivity"
+            android:name=".features.todo.activities.TodoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
