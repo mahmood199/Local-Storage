@@ -2,6 +2,7 @@ package com.example.localstorage.features.todo.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -34,14 +35,11 @@ class TodoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTodoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var todoNumber = 100
         getAllTodos()
 
         binding.apply {
             btnAddTodo.setOnClickListener {
-                viewModel.addTodo("Todo Title $todoNumber", "Todo Description $todoNumber")
-                todoNumber++
-                getAllTodos()
+                addNewTodoSafely()
             }
 
             btnShowAllTodo.setOnClickListener {
@@ -55,6 +53,37 @@ class TodoActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun addNewTodoSafely() {
+        binding.apply {
+            if (TextUtils.isEmpty(etTodoTitle.text)) {
+                Toast.makeText(this@TodoActivity,
+                    getString(R.string.error_empty_title),
+                    Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            if (TextUtils.isEmpty(etTodoDescription.text)) {
+                Toast.makeText(this@TodoActivity,
+                    getString(R.string.error_empty_description),
+                    Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            viewModel.addTodo(etTodoTitle.text.toString(), etTodoDescription.text.toString())
+            clearFields()
+            getAllTodos()
+        }
+    }
+
+    private fun clearFields() {
+        binding.apply {
+            etTodoTitle.setText("")
+            etTodoDescription.setText("")
+
+            etTodoTitle.requestFocus()
+        }
     }
 
     private fun getAllTodos() {

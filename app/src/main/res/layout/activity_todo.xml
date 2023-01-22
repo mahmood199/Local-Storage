@@ -7,44 +7,68 @@
     android:background="@color/white"
     tools:context=".features.todo.activities.TodoActivity">
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_todo_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="@string/add_the_title_for_your_task_here"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_todo_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_the_description_for_your_task_here"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/et_todo_title" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_delete_all_todo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/delete_all_todo"
-        app:layout_constraintBottom_toTopOf="@+id/btn_show_all_todo"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_show_all_todo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_show_all_todo" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add_todo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="32dp"
         android:text="@string/add_todo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/et_todo_description" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_show_all_todo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/show_todo"
-        app:layout_constraintBottom_toTopOf="@+id/btn_add_todo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_todo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_todo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="32dp"
         android:orientation="vertical"
         android:padding="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_todo"
+        app:layout_constraintTop_toBottomOf="@+id/btn_show_all_todo"
         tools:itemCount="4"
         tools:listitem="@layout/item_todo" />
 

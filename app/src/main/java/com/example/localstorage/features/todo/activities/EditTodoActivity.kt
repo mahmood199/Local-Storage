@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.example.localstorage.R
 import com.example.localstorage.data.model.Todo
 import com.example.localstorage.databinding.ActivityEditTodoBinding
 import com.example.localstorage.extension.showKeyboard
@@ -47,14 +48,14 @@ class EditTodoActivity : AppCompatActivity() {
             btnSaveTodoDetail.setOnClickListener {
                 if (TextUtils.isEmpty(etTitle.text)) {
                     Toast.makeText(this@EditTodoActivity,
-                        "Title can't be empty",
+                        getString(R.string.error_empty_title),
                         Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
                 if (TextUtils.isEmpty(etDescription.text)) {
                     Toast.makeText(this@EditTodoActivity,
-                        "Title can't be empty",
+                        getString(R.string.error_empty_description),
                         Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }

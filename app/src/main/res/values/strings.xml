@@ -10,4 +10,8 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="save">save</string>
+    <string name="error_empty_title">Title can\'t be empty</string>
+    <string name="error_empty_description">Description can\'t be empty</string>
+    <string name="add_the_title_for_your_task_here">Add the title for your task here</string>
+    <string name="add_the_description_for_your_task_here">Add the description for your task here</string>
 </resources>
