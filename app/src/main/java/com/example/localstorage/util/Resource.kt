@@ -17,10 +17,7 @@ sealed class Resource<out T> {
 
 
 enum class FailureStatus {
-    EMPTY,
     API_FAIL,
     NO_INTERNET,
     ACCESS_DENIED,
-    USER_UNAPPROVED,
-    OTHER
 }
