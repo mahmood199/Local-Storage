@@ -1,4 +1,4 @@
-package com.example.localstorage.feat.employee
+package com.example.localstorage.features.employee
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

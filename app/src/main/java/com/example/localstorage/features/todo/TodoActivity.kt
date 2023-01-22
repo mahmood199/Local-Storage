@@ -1,4 +1,4 @@
-package com.example.localstorage.feat.todo
+package com.example.localstorage.features.todo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import com.example.localstorage.R
 import com.example.localstorage.data.model.Todo
 import com.example.localstorage.databinding.ActivityTodoBinding
-import com.example.localstorage.feat.todo.adapter.TodoAdapter
+import com.example.localstorage.features.todo.adapter.TodoAdapter
 import com.example.localstorage.util.Resource
 
 class TodoActivity : AppCompatActivity() {

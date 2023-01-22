@@ -1,11 +1,11 @@
-package com.example.localstorage.feat.todo.adapter
+package com.example.localstorage.features.todo.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.localstorage.data.model.Todo
 import com.example.localstorage.databinding.ItemTodoBinding
-import com.example.localstorage.feat.todo.TodoClickListenerAction
+import com.example.localstorage.features.todo.TodoClickListenerAction
 
 class TodoAdapter(
     private val todoList: MutableList<Todo>,

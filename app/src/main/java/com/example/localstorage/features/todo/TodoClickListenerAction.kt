@@ -1,4 +1,4 @@
-package com.example.localstorage.feat.todo
+package com.example.localstorage.features.todo
 
 import com.example.localstorage.data.model.Todo
 
