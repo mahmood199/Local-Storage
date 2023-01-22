@@ -1,4 +1,4 @@
-package com.example.localstorage
+package com.example.localstorage.ui
 
 import android.os.Bundle
 import android.text.TextUtils
