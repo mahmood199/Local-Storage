@@ -61,5 +61,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion"
 
+    def fragmentViewModelDelegate = "1.5.5"
+    implementation "androidx.fragment:fragment-ktx:$fragmentViewModelDelegate"
+
+
 
 }
