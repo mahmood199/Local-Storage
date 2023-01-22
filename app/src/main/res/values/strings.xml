@@ -7,4 +7,7 @@
     <string name="choose_an_action">Choose an action on todo</string>
     <string name="edit_todo">Edit this todo</string>
     <string name="delete_todo">Delete this todo</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="save">save</string>
 </resources>
