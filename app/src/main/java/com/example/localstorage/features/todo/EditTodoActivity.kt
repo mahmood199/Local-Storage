@@ -1,6 +1,5 @@
 package com.example.localstorage.features.todo
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +9,7 @@ import androidx.activity.viewModels
 import com.example.localstorage.data.model.Todo
 import com.example.localstorage.databinding.ActivityEditTodoBinding
 import com.example.localstorage.extension.showKeyboard
+import com.example.localstorage.util.BundleDataIdentifier
 
 class EditTodoActivity : AppCompatActivity() {
 
