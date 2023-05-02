@@ -7,7 +7,7 @@ import android.text.TextUtils
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.localstorage.R
-import com.example.localstorage.data.model.Todo
+import com.example.localstorage.data.local.model.Todo
 import com.example.localstorage.databinding.ActivityEditTodoBinding
 import com.example.localstorage.extension.showKeyboard
 import com.example.localstorage.features.todo.viewmodel.EditTodoViewModel

@@ -1,4 +1,4 @@
-package com.example.localstorage.data.model
+package com.example.localstorage.data.local.model
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

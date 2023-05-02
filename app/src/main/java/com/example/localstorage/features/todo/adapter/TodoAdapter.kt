@@ -3,7 +3,7 @@ package com.example.localstorage.features.todo.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.localstorage.data.model.Todo
+import com.example.localstorage.data.local.model.Todo
 import com.example.localstorage.databinding.ItemTodoBinding
 import com.example.localstorage.features.todo.TodoClickListenerAction
 

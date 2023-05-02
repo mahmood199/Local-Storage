@@ -1,4 +1,4 @@
-package com.example.localstorage.data.db
+package com.example.localstorage.data.local.db
 
 interface DBLiterals {
     companion object{
