@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.example.localstorage.data.db.DBAccessPoint
-import com.example.localstorage.data.model.Employee
+import com.example.localstorage.data.local.db.DBAccessPoint
+import com.example.localstorage.data.local.model.Employee
 import com.example.localstorage.util.FailureStatus
 import com.example.localstorage.util.Resource
 import kotlinx.coroutines.Dispatchers

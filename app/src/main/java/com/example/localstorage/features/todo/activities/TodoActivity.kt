@@ -11,7 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.localstorage.R
-import com.example.localstorage.data.model.Todo
+import com.example.localstorage.data.local.model.Todo
 import com.example.localstorage.databinding.ActivityTodoBinding
 import com.example.localstorage.features.todo.TodoClickListenerAction
 import com.example.localstorage.features.todo.viewmodel.TodoViewModel

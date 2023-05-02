@@ -1,7 +1,7 @@
-package com.example.localstorage.data.dao
+package com.example.localstorage.data.local.dao
 
 import androidx.room.*
-import com.example.localstorage.data.model.Employee
+import com.example.localstorage.data.local.model.Employee
 
 @Dao
 interface EmployeeDao {

@@ -1,4 +1,4 @@
-package com.example.localstorage.data.db
+package com.example.localstorage.data.local.db
 
 import android.content.Context
 import androidx.room.Room
@@ -9,7 +9,8 @@ object DBAccessPoint {
         return Room.databaseBuilder(
             context,
             AppDataBase::class.java,
-            DBLiterals.dbName)
+            DBLiterals.dbName
+        )
             .build()
     }
 

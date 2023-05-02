@@ -1,11 +1,11 @@
-package com.example.localstorage.data.dao
+package com.example.localstorage.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.localstorage.data.model.Todo
+import com.example.localstorage.data.local.model.Todo
 
 @Dao
 interface TodoDao {

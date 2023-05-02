@@ -5,7 +5,7 @@ import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.localstorage.data.model.Employee
+import com.example.localstorage.data.local.model.Employee
 import com.example.localstorage.util.Resource
 import com.example.localstorage.databinding.ActivityMainBinding
 
