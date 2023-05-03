@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.localstorage.data.local.model.Chat
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 
 @Dao
@@ -19,5 +20,7 @@ interface ChatDao {
 
     @Query("SELECT * FROM chat ORDER BY date ASC")
     fun getAllChat(): Flow<List<Chat>>
+
+    fun getAllUnique() = getAllChat().distinctUntilChanged()
 
 }
