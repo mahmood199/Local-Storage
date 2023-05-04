@@ -14,14 +14,7 @@
         android:theme="@style/Theme.LocalStorage"
         tools:targetApi="31">
         <activity
-            android:name=".features.todo.activities.EditTodoActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".features.todo.activities.TodoActivity"
+            android:name=".features.chat.ChatActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,10 +25,21 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
         </activity>
         <activity
+            android:name=".features.todo.activities.EditTodoActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".features.todo.activities.TodoActivity"
+            android:exported="true"></activity>
+        <activity
             android:name=".features.employee.MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
