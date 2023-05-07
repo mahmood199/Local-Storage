@@ -80,12 +80,12 @@ class ChatDiffCallBack : DiffUtil.ItemCallback<ChatUIItem>() {
     }
 
     override fun areItemsTheSame(oldItem: ChatUIItem, newItem: ChatUIItem): Boolean {
-        Log.d(TAG,Thread.currentThread().name)
+        Log.d(TAG, Thread.currentThread().name)
         return oldItem.id == newItem.id;
     }
 
     override fun areContentsTheSame(oldItem: ChatUIItem, newItem: ChatUIItem): Boolean {
-        Log.d(TAG,Thread.currentThread().name)
+        Log.d(TAG, Thread.currentThread().name)
         return oldItem == newItem
     }
 
