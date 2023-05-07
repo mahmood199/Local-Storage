@@ -1,20 +1,21 @@
 package com.example.localstorage.features.chat
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.localstorage.R
 import com.example.localstorage.databinding.ItemChatUserQueryBinding
 import com.example.localstorage.databinding.ItemChatWordMeaningResponseBinding
 
-class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private val items = mutableListOf<ChatUIItem>()
+class ChatAdapterV2 : ListAdapter<ChatUIItem, RecyclerView.ViewHolder>(ChatDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             R.layout.item_chat_user_query -> {
-                UserQueryViewHolder(
+                UserQueryViewHolder2(
                     ItemChatUserQueryBinding.inflate(
                         LayoutInflater.from(
                             parent.context
@@ -23,7 +24,7 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 )
             }
             R.layout.item_chat_word_meaning_response -> {
-                WordMeaningViewHolder(
+                WordMeaningViewHolder2(
                     ItemChatWordMeaningResponseBinding.inflate(
                         LayoutInflater.from(
                             parent.context
@@ -37,30 +38,22 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    override fun getItemCount() = items.size
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (val item = items[position]) {
-            is ChatUIItem.ServerResponse -> (holder as WordMeaningViewHolder).bind(item)
-            is ChatUIItem.UserQuery -> (holder as UserQueryViewHolder).bind(item)
+        when (val item = getItem(position)) {
+            is ChatUIItem.ServerResponse -> (holder as WordMeaningViewHolder2).bind(item)
+            is ChatUIItem.UserQuery -> (holder as UserQueryViewHolder2).bind(item)
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (items[position]) {
+        return when (getItem(position)) {
             is ChatUIItem.ServerResponse -> R.layout.item_chat_word_meaning_response
             is ChatUIItem.UserQuery -> R.layout.item_chat_user_query
         }
     }
 
-    fun addItem(list: List<ChatUIItem>) {
-        val originalSize = items.size
-        items.addAll(list)
-        notifyItemRangeChanged(originalSize, items.size)
-    }
 
-
-    inner class UserQueryViewHolder(private val binding: ItemChatUserQueryBinding) :
+    inner class UserQueryViewHolder2(private val binding: ItemChatUserQueryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: ChatUIItem.UserQuery) {
@@ -69,7 +62,7 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     }
 
-    inner class WordMeaningViewHolder(private val binding: ItemChatWordMeaningResponseBinding) :
+    inner class WordMeaningViewHolder2(private val binding: ItemChatWordMeaningResponseBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: ChatUIItem.ServerResponse) {
@@ -78,5 +71,22 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     }
 
+}
+
+class ChatDiffCallBack : DiffUtil.ItemCallback<ChatUIItem>() {
+
+    companion object {
+        const val TAG = "TaskDiffCallBack"
+    }
+
+    override fun areItemsTheSame(oldItem: ChatUIItem, newItem: ChatUIItem): Boolean {
+        Log.d(TAG,Thread.currentThread().name)
+        return oldItem.id == newItem.id;
+    }
+
+    override fun areContentsTheSame(oldItem: ChatUIItem, newItem: ChatUIItem): Boolean {
+        Log.d(TAG,Thread.currentThread().name)
+        return oldItem == newItem
+    }
 
 }

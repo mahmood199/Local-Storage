@@ -31,17 +31,17 @@ class ChatActivity : AppCompatActivity() {
             fab.setOnClickListener {
                 checkText()
             }
-            rvChat.adapter = ChatAdapter()
+            rvChat.adapter = ChatAdapterV2()
         }
 
         lifecycleScope.launch {
             viewModel.getAllChats().collect { list ->
-                (binding.rvChat.adapter as ChatAdapter).addItem(
+                (binding.rvChat.adapter as ChatAdapterV2).submitList(
                     list.map {
                         if (it.chatType == ChatType.FromServer)
-                            ChatUIItem.ServerResponse(it.text)
+                            ChatUIItem.ServerResponse(it.text, it.id.toInt())
                         else
-                            ChatUIItem.UserQuery(it.text)
+                            ChatUIItem.UserQuery(it.text, it.id.toInt())
                     }
                 )
             }
