@@ -1,6 +1,11 @@
 package com.example.localstorage.features.chat
 
-sealed class ChatUIItem {
-    data class UserQuery(val message: String) : ChatUIItem()
-    data class ServerResponse(val message: String) : ChatUIItem()
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+sealed class ChatUIItem(val id: Int): Parcelable {
+    @Parcelize
+    data class UserQuery(val message: String, val userQueryId: Int) : ChatUIItem(userQueryId)
+    @Parcelize
+    data class ServerResponse(val message: String, val serverResponseId: Int, val imageUrl: String) : ChatUIItem(serverResponseId)
 }

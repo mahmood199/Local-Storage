@@ -21,6 +21,7 @@ interface ChatDao {
     @Query("SELECT * FROM chat ORDER BY date ASC")
     fun getAllChat(): Flow<List<Chat>>
 
+    //NOT REQUIRED
     fun getAllUnique() = getAllChat().distinctUntilChanged()
 
 }
