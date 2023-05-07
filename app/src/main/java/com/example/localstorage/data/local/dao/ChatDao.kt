@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 interface ChatDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(chat: Chat): Long
+    suspend fun insert(chat: Chat): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(chat: List<Chat>): List<Long>

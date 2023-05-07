@@ -20,7 +20,7 @@ class ChatAdapterV2 : ListAdapter<ChatUIItem, RecyclerView.ViewHolder>(ChatDiffC
                     ItemChatUserQueryBinding.inflate(
                         LayoutInflater.from(
                             parent.context
-                        )
+                        ), parent, false
                     )
                 )
             }
@@ -29,7 +29,7 @@ class ChatAdapterV2 : ListAdapter<ChatUIItem, RecyclerView.ViewHolder>(ChatDiffC
                     ItemChatWordMeaningResponseBinding.inflate(
                         LayoutInflater.from(
                             parent.context
-                        )
+                        ), parent, false
                     )
                 )
             }

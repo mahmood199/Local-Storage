@@ -1,11 +1,9 @@
 package com.example.localstorage.features.chat
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.localstorage.LocalStorageApplication
 import com.example.localstorage.data.local.model.ChatType
@@ -60,9 +58,9 @@ class ChatActivity : AppCompatActivity() {
             if (etQuery.text.isNullOrEmpty()) {
                 Toast.makeText(this@ChatActivity, "Enter something", Toast.LENGTH_SHORT).show()
             } else {
-                etQuery.setText("")
                 hideKeyboard(binding.root)
                 viewModel.insertChatItem(etQuery.text.toString())
+                etQuery.setText("")
             }
         }
     }
