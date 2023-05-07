@@ -8,6 +8,7 @@ import com.example.localstorage.data.local.db.DBAccessPoint
 import com.example.localstorage.data.local.model.Chat
 import com.example.localstorage.data.local.model.ChatType
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ChatViewModel(private val chatDao: ChatDao) : ViewModel() {
@@ -15,6 +16,15 @@ class ChatViewModel(private val chatDao: ChatDao) : ViewModel() {
     fun insertChatItem(message: String) {
         viewModelScope.launch(Dispatchers.IO) {
             chatDao.insert(Chat(chatType = ChatType.UserQuery, text = message))
+            delay(1500)
+            chatDao.insert(
+                Chat(
+                    chatType = ChatType.FromServer,
+                    text = "Response : $message",
+                    description = "Description $message",
+                    imageUrl = "https://source.unsplash.com/user/c_v_r/100x100",
+                )
+            )
         }
     }
 

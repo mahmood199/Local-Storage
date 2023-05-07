@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.localstorage.LocalStorageApplication
 import com.example.localstorage.data.local.model.ChatType
 import com.example.localstorage.databinding.ActivityChatBinding
+import com.example.localstorage.extension.hideKeyboard
 import kotlinx.coroutines.launch
 
 class ChatActivity : AppCompatActivity() {
@@ -32,6 +33,7 @@ class ChatActivity : AppCompatActivity() {
                 checkText()
             }
             rvChat.adapter = ChatAdapterV2()
+            scrollToLatestItemPosition()
         }
 
         lifecycleScope.launch {
@@ -39,13 +41,18 @@ class ChatActivity : AppCompatActivity() {
                 (binding.rvChat.adapter as ChatAdapterV2).submitList(
                     list.map {
                         if (it.chatType == ChatType.FromServer)
-                            ChatUIItem.ServerResponse(it.text, it.id.toInt())
+                            ChatUIItem.ServerResponse(it.text, it.id.toInt(), it.imageUrl.toString())
                         else
                             ChatUIItem.UserQuery(it.text, it.id.toInt())
                     }
                 )
+                scrollToLatestItemPosition()
             }
         }
+    }
+
+    private fun scrollToLatestItemPosition() {
+        binding.rvChat.scrollToPosition((binding.rvChat.adapter as ChatAdapterV2).itemCount - 1)
     }
 
     private fun checkText() {
@@ -53,6 +60,8 @@ class ChatActivity : AppCompatActivity() {
             if (etQuery.text.isNullOrEmpty()) {
                 Toast.makeText(this@ChatActivity, "Enter something", Toast.LENGTH_SHORT).show()
             } else {
+                etQuery.setText("")
+                hideKeyboard(binding.root)
                 viewModel.insertChatItem(etQuery.text.toString())
             }
         }

@@ -1,5 +1,6 @@
 package com.example.localstorage.features.chat
 
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -66,7 +67,10 @@ class ChatAdapterV2 : ListAdapter<ChatUIItem, RecyclerView.ViewHolder>(ChatDiffC
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: ChatUIItem.ServerResponse) {
-            binding.tvMeaning.text = item.message
+            with(binding) {
+                tvMeaning.text = item.message
+                ivWord.setImageURI(Uri.parse(item.imageUrl))
+            }
         }
 
     }
