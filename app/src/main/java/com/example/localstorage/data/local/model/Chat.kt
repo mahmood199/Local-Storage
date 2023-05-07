@@ -20,5 +20,5 @@ data class Chat(
     @ColumnInfo(name = "redirect_url")
     val redirectUrl: String? = null,
     @ColumnInfo(name = "date")
-    val date: Long,
+    val date: Long = System.currentTimeMillis(),
 )

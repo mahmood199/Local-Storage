@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 interface ChatDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(chat: Chat): Long
+    fun insert(chat: Chat): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(chat: List<Chat>): List<Long>
@@ -21,6 +21,7 @@ interface ChatDao {
     @Query("SELECT * FROM chat ORDER BY date ASC")
     fun getAllChat(): Flow<List<Chat>>
 
+    //NOT REQUIRED
     fun getAllUnique() = getAllChat().distinctUntilChanged()
 
 }

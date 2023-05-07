@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.localstorage"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -62,9 +62,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion"
 
-    def fragmentViewModelDelegate = "1.5.5"
+    def fragmentViewModelDelegate = "1.5.7"
     implementation "androidx.fragment:fragment-ktx:$fragmentViewModelDelegate"
 
+    implementation "androidx.activity:activity-ktx:1.7.1"
 
 
 }
